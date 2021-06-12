@@ -200,12 +200,15 @@ Muncul file sistem baru
 ![alt text](https://i.postimg.cc/QMH9fpTp/3.jpg)
 
 File asli 
+
 ![alt text](https://i.postimg.cc/D0KSfHYg/4.jpg)
 
 File yang terencode
+
 ![alt text](https://i.postimg.cc/q7PRQW0T/5.jpg)
 
 hasil log yang di cetak
+
 ![alt text](https://i.postimg.cc/PrS50ChK/reload.jpg)
 
 
