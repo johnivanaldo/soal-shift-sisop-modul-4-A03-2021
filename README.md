@@ -193,5 +193,12 @@ Metode encode pada suatu direktori juga berlaku terhadap direktori yang ada di d
 
 ### Output
 
+![alt text](https://i.postimg.cc/NfHXc8Jb/Capture.jpg)
+![alt text](https://i.postimg.cc/mkQFQBFJ/2.jpg)
+![alt text](https://i.postimg.cc/QMH9fpTp/3.jpg)
+![alt text](https://i.postimg.cc/D0KSfHYg/4.jpg)
+![alt text](https://i.postimg.cc/q7PRQW0T/5.jpg)
+![alt text](https://i.postimg.cc/PrS50ChK/reload.jpg)
+
 
 ## Soal No 4
