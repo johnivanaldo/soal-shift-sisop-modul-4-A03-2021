@@ -292,3 +292,7 @@ INFO::28052021-10:01:00:RENAME::/test.txt::/rename.txt
                 time_info->tm_min, time_info->tm_sec, str);
     }
 ```
+
+## Kendala
+- Ketika mencaro dokumentasi FUSE di internet masih sangat sedikit dan susah ditemukan
+- Masih bingung debugging
