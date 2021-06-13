@@ -213,3 +213,82 @@ hasil log yang di cetak
 
 
 ## Soal No 4
+Untuk memudahkan dalam memonitor kegiatan pada filesystem mereka Sin dan Sei membuat sebuah log system dengan spesifikasi sebagai berikut.
+
+### 4a 
+Log system yang akan terbentuk bernama “SinSeiFS.log” pada direktori home pengguna (/home/[user]/SinSeiFS.log). Log system ini akan menyimpan daftar perintah system call yang telah dijalankan pada filesystem.
+
+### jawab
+Untuk soal ini, kita menentukan nama directory.
+```
+static char *logpath = "/home/wisnupramoedya/SinSeiFS.log";
+```
+Kita membuat log_file berikut.
+```
+FILE *log_file = fopen(logpath, "a");
+```
+
+### 4b
+Karena Sin dan Sei suka kerapian maka log yang dibuat akan dibagi menjadi dua level, yaitu INFO dan WARNING.
+
+### jawab
+Kita membuat dua jenis kode log.
+```
+const int INFO = 1;
+const int WARNING = 2;
+```
+
+### 4c
+Untuk log level WARNING, digunakan untuk mencatat syscall rmdir dan unlink.
+
+### jawab
+Pada rmdir, kode yang ditulis.
+```
+char str[100];
+sprintf(str, "RMDIR::%s", path);
+log_v2(str, WARNING);
+
+```
+Sedangkan, unlink sebagai berikut.
+```
+char str[100];
+sprintf(str, "REMOVE::%s", path);
+log_v2(str, WARNING);
+
+```
+
+### 4d
+Sisanya, akan dicatat pada level INFO
+```
+char str[100];
+sprintf(str, "MKDIR::%s", path);
+log_v2(str, INFO);
+```
+
+### 4e
+Format untuk logging yaitu:
+
+[Level]::[dd][mm][yyyy]-[HH]:[MM]:[SS]:[CMD]::[DESC :: DESC]
+
+Level : Level logging, dd : 2 digit tanggal, mm : 2 digit bulan, yyyy : 4 digit tahun, HH : 2 digit jam (format 24 Jam),MM : 2 digit menit, SS : 2 digit detik, CMD : System Call yang terpanggil, DESC : informasi dan parameter tambahan
+
+INFO::28052021-10:00:00:CREATE::/test.txt
+INFO::28052021-10:01:00:RENAME::/test.txt::/rename.txt
+
+### jawab
+```
+    time_t current_time;
+    time(&current_time);
+    struct tm *time_info;
+    time_info = localtime(&current_time);
+
+    if (type == INFO) {
+        fprintf(log_file, "INFO::%d%d%d-%d:%d:%d:%s\n", time_info->tm_mday,
+                time_info->tm_mon, time_info->tm_year, time_info->tm_hour,
+                time_info->tm_min, time_info->tm_sec, str);
+    } else if (type == WARNING) {
+        fprintf(log_file, "WARNING::%d%d%d-%d:%d:%d:%s\n", time_info->tm_mday,
+                time_info->tm_mon, time_info->tm_year, time_info->tm_hour,
+                time_info->tm_min, time_info->tm_sec, str);
+    }
+```
